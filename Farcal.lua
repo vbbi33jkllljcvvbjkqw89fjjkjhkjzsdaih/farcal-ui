@@ -486,7 +486,7 @@ local Library = {
         end
 
 
-        getgenv().FarcalLibrary = nil
+        if getgenv().FarcalLibrary == Library then getgenv().FarcalLibrary = nil end
     end
 
     Instances.Create = function(Self, Class, Properties)
