@@ -5712,6 +5712,7 @@ local Library = {
                 Callback = Params.Callback or Params.callback or Params.OnSuccess or Params.onsuccess or function() end,
                 Validate = Params.Validate or Params.validate,
                 Checking = false,
+                Status = Params.Status or Params.status,
                 Unlocked = false,
                 Items = { },
             }
@@ -6440,6 +6441,10 @@ local Library = {
 
                 Library:Thread(function()
                     task.wait(0.2)
+                    if KeySystem.Status then
+                        FlashStatus(tostring(KeySystem.Status), true, 3)
+                    end
+
                     if not KeySystem.Unlocked and Items["Input"] and Items["Input"].Instance then
                         Items["Input"].Instance:CaptureFocus()
                     end
